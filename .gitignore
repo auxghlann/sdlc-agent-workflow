@@ -1,0 +1,10 @@
+# SDLC Agent Workflow - Ignored Artifacts
+.plans/
+
+# Operating System & IDE Artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.log
