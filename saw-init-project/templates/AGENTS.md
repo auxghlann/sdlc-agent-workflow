@@ -41,6 +41,7 @@ Refer to the SDLC agent workflow skills (`saw-*`) in `.agents/skills/` or persis
 - **Pull Request & Commit Flow**: `saw-pr`
 - **Specification Drift Sync**: `saw-update-spec`
 - **Session Recall & Quiz Generation**: `saw-quiz-me`
+- **Workflow Guide & Reference**: `saw-help` (`/saw-help`)
 
 ## Companion Optimization Skills
 Refer to optimization skills in `.agents/skills/` or `~/.agents/skills/`:

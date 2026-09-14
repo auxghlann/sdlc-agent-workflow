@@ -15,6 +15,7 @@ The SDLC Agent Workflow suite enforces modular project truth, security-first val
 | **`saw-security-check`** | Phase 3: Security & Static Audit | Audits active diffs for hardcoded secrets, injection vectors, missing RLS policies, and vulnerable dependencies | [saw-security-check/](./saw-security-check/) |
 | **`saw-pr`** | Phase 4: Review & Pull Request | Mandates security check pass, manages feature branches, generates conventional commits, and opens GitHub PRs | [saw-pr/](./saw-pr/) |
 | **`saw-quiz-me`** | Phase 5: Knowledge Retention & Onboarding | Synthesizes recent sessions into offline interactive HTML documentation and self-assessment recall quizzes | [saw-quiz-me/](./saw-quiz-me/) |
+| **`saw-help`** | Reference & Lifecycle Navigation | Quick-reference card, command cheatsheet, and lifecycle guide for the full workflow suite | [saw-help/](./saw-help/) |
 
 ---
 
@@ -113,7 +114,10 @@ sdlc-agent-workflow/
 |-- saw-update-spec/                   (Continuous spec-code alignment)
 |   |-- SKILL.md
 |   `-- README.md
-`-- saw-quiz-me/                       (Interactive recall documentation & quiz)
+|-- saw-quiz-me/                       (Interactive recall documentation & quiz)
+|   |-- SKILL.md
+|   `-- README.md
+`-- saw-help/                          (Quick-reference card & lifecycle guide)
     |-- SKILL.md
     `-- README.md
 ```
@@ -167,17 +171,47 @@ Emojis are strictly avoided in code, commit messages, diagrams, and technical do
 
 ## Installation & Deployment
 
-To make these skills available to Antigravity agents:
+You can install the SDLC Agent Workflow suite using the official **Skills CLI (`npx skills`)** or via direct copy.
 
-### Workspace Installation
-Copy the desired skill folders into your project's `.agents/skills/` directory:
+### Method 1: Using Skills CLI (`npx skills`)
+
+The Skills CLI automatically detects Antigravity (as well as Cursor, Codex, Claude Code, and Copilot) and configures the skills.
+
+#### Local Installation (From this repository)
+From the root of this repository:
+```powershell
+# Install all skills globally for all projects
+npx skills add . -g -y
+
+# Or install for current project only
+npx skills add . -y
+```
+
+From any other folder, pass the absolute path:
+```powershell
+npx skills add "C:\Users\Khester Mesa\Documents\projects\skills\sdlc-agent-workflow" -g -y
+```
+
+#### GitHub Installation (After pushing to GitHub)
+Once pushed to a GitHub repository (`<username>/<repo>`), anyone can install without cloning:
+```powershell
+# Install all skills globally
+npx skills add <github-username>/sdlc-agent-workflow -g -y
+
+# Install only specific skills
+npx skills add <github-username>/sdlc-agent-workflow --skill saw-init-project -g -y
+```
+
+---
+
+### Method 2: Direct File Copy / Junction
+
+#### Project-Specific
 ```powershell
 Copy-Item -Recurse "path\to\sdlc-agent-workflow\saw-*" "C:\path\to\target-project\.agents\skills\"
 ```
 
-### Global Installation
-Alternatively, link or copy skills to your user-level customization root:
+#### Global
 ```powershell
 Copy-Item -Recurse "path\to\sdlc-agent-workflow\saw-*" "$HOME\.agents\skills\"
 ```
-Antigravity automatically discovers and loads skills located in `.agents/skills/` without requiring manual workflow registrations.
